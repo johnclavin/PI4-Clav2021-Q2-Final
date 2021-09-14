@@ -1,0 +1,37 @@
+<!-- Understanding Handlebars - jcTest 2 - John Clavin -->
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Mechanism of Handlebars</title>
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+</head>
+
+<body>
+<h2>The Mechanism of Handlebars</h2>
+<div id="app"></div>
+
+<script id="templateId" type="text/x-handlebars-template">
+  <h3>Hello, {{name}}</h3>
+  <p>Random Number: {{randomNumber}}</p>
+</script>
+
+<script>
+
+  let templateElement = document.getElementById("templateId").innerHTML;
+
+  let templateCompiled = Handlebars.compile(templateElement);
+
+  let destinationContainer = document.getElementById('app');
+
+  let rNumber = Math.floor(Math.random() * 100000);
+
+  let dataForTemplate = { name: 'Dr. Temple Latehouse', randomNumber: rNumber};
+
+  destinationContainer.innerHTML = templateCompiled(dataForTemplate);
+
+</script>
+
+</body>
+</html>
+

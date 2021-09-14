@@ -1,0 +1,66 @@
+<!-- Understanding Handlebars with Canvas - John Clavin -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Pain</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+  </head>
+
+  <body>
+    <h3>Canvas HBS Example - JC Test 3</h3>
+
+    <script id="templateId" type="text/x-handlebars-template">
+      <div>
+        <canvas
+          id='jcCanvas'
+          width='500'
+          height='500'
+          style='border:4px solid #000000'
+        </canvas>
+      </div>
+    </script>
+
+    <div id="content"></div>
+
+    <script>
+      let templateElement = document.getElementById('templateId').innerHTML;
+
+      let templateCompiled = Handlebars.compile(templateElement);
+
+      let destinationContainer = document.getElementById('content');
+
+      destinationContainer.innerHTML = templateCompiled();
+
+      let c = document.getElementById('jcCanvas');
+      let ctx = c.getContext('2d');
+      let xR = 0;
+      let xG = 0;
+      let xB = 0;
+      let x = 0;
+      let y = 0;
+
+      for (let i = 0; i < 10000; i++) {
+        x = Math.random() * 500;
+        y = Math.random() * 500;
+        if (x < 250) {
+          xR = x;
+        } else {
+          xR = 500 - x;
+        }
+        if (y < 250) {
+          xG = y;
+        } else {
+          xG = 500 - y;
+        }
+
+        ctx.beginPath();
+        ctx.arc(x, y, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgb(${xR},${xG},${xB})`;
+        ctx.fill();
+        ctx.stroke();
+      }
+    </script>
+  </body>
+</html>

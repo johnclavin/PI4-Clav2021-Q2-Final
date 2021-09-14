@@ -1,0 +1,22 @@
+
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Horseface Handlebars</title>
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+</head>
+
+<body>
+
+<div id="app"></div>
+<script>
+
+let template = Handlebars.compile('<h2>Hello {{name}}</h2>');
+let container = document.getElementById('app');
+container.innerHTML = template({ name: 'Old Horseface' });
+
+</script>
+
+</body>
+</html>

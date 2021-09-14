@@ -1,0 +1,47 @@
+<!-- Example but re-coded by jClavin -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Pain</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+  </head>
+
+  <body>
+    <h3>Canvas HBS Example</h3>
+
+    <script id="templateId" type="text/x-handlebars-template">
+      <div style="background-color: {{bgc}}; height: 400px; width: 400px">
+        <canvas
+          id='jcCanvas'
+          width='400'
+          height='400'
+          style='border:4px solid #d30000'
+        </canvas>
+      </div>
+    </script>
+
+    <div id="content"></div>
+
+    <script>
+      let templateElement = document.getElementById('templateId').innerHTML;
+
+      let templateCompiled = Handlebars.compile(templateElement);
+
+      let destinationContainer = document.getElementById('content');
+
+      let dataForTemplate = {
+        bgc: '#00AAC9'
+      };
+
+      destinationContainer.innerHTML = templateCompiled(dataForTemplate);
+
+      let c = document.getElementById('jcCanvas');
+      let ctx = c.getContext('2d');
+      ctx.fillStyle = '#AAAA66';
+      ctx.fillRect(40, 40, 320, 320);
+
+    </script>
+  </body>
+</html>
